@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ООО "СмолДиАл" - Строительные работы в Смоленске</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            max-width: 800px;
+            margin: 0 auto 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 28px;
+            color: var(--dark);
+        }
+
+        .about {
+            background-color: white;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .services {
+            background-color: var(--light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+
+        .service-card ul {
+            list-style-position: inside;
+            margin-left: 5px;
+            font-size: 14px;
+        }
+
+        .service-card ul li {
+            margin-bottom: 6px;
+        }
+
+        .gallery {
+            background-color: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .contact {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .contact-form {
+            flex: 1;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .contact-form h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            height: 100px;
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Мобильная версия */
+        @media (min-width: 768px) {
+            .logo {
+                font-size: 24px;
+            }
+            
+            nav ul li a {
+                font-size: 16px;
+            }
+            
+            .hero {
+                padding: 100px 0;
+            }
+            
+            .hero h1 {
+                font-size: 48px;
+            }
+            
+            .hero p {
+                font-size: 20px;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .section-title {
+                font-size: 36px;
+                margin-bottom: 50px;
+            }
+            
+            .about-content {
+                flex-direction: row;
+                gap: 50px;
+            }
+            
+            .about-text p {
+                font-size: 16px;
+            }
+            
+            .services-grid {
+                gap: 30px;
+            }
+            
+            .service-card {
+                padding: 30px;
+            }
+            
+            .service-card h3 {
+                font-size: 22px;
+            }
+            
+            .service-card ul {
+                font-size: 16px;
+            }
+            
+            .gallery-grid {
+                gap: 20px;
+            }
+            
+            .gallery-item img {
+                height: 200px;
+            }
+            
+            .contact-container {
+                flex-direction: row;
+                gap: 50px;
+            }
+            
+            .contact-form {
+                padding: 30px;
+            }
+            
+            .contact-info h3,
+            .contact-form h3 {
+                font-size: 24px;
+            }
+            
+            .contact-info p {
+                font-size: 16px;
+            }
+            
+            .form-group input,
+            .form-group textarea {
+                padding: 10px;
+                font-size: 16px;
+            }
+            
+            .form-group textarea {
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">ООО <span>СмолДиАл</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#about">О компании</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#gallery">Галерея</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Профессиональные строительные услуги</h1>
+            <p>ООО "СмолДиАл" - амбициозная и развивающаяся компания с опытом работы в строительстве более 10 лет</p>
+            <a href="#contact" class="btn">Связаться с нами</a>
+        </div>
+    </section>
+
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">О компании</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>ООО "СмолДиАл" - амбициозная и развивающаяся компания, созданная в 2024 году. Наши специалисты имеют более 10 лет опыта работы в строительной сфере.</p>
+                    <p>Мы предлагаем полный спектр строительных услуг - от подготовительных работ до сдачи объекта "под ключ". Наша команда состоит из высококвалифицированных специалистов, которые используют современные технологии и материалы.</p>
+                    <p>Опыт работы в области исполнительной документации на объектах строительства составляет более 5 лет. Мы гарантируем качественное выполнение работ в установленные сроки.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Строительная площадка">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section services">
+        <div class="container">
+            <h2 class="section-title">Наши услуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Подготовительные работы</h3>
+                    <ul>
+                        <li>Вырубка деревьев</li>
+                        <li>Разборка ограждений</li>
+                        <li>Подготовка территории к строительству</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Земляные работы</h3>
+                    <ul>
+                        <li>Выравнивание рельефа</li>
+                        <li>Копка котлованов под основание дороги, здания</li>
+                        <li>Прокладка временных дорог</li>
+                        <li>Возведение насыпей</li>
+                        <li>Засыпка заболоченных участков</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Прокладка коммуникаций</h3>
+                    <ul>
+                        <li>Прокладка новых инженерных коммуникаций</li>
+                        <li>Замена старых коммуникаций</li>
+                        <li>Монтаж систем водоотведения</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Засыпка оснований</h3>
+                    <ul>
+                        <li>Подстилающий слой из песка</li>
+                        <li>Заливка основания из щебня или бетона</li>
+                        <li>Укладка асфальтового покрытия</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Монолитные работы</h3>
+                    <ul>
+                        <li>Монтаж опалубки</li>
+                        <li>Сборка и установка армирующего каркаса</li>
+                        <li>Приготовление и заливка бетонной смеси</li>
+                        <li>Уплотнение залитого бетона</li>
+                        <li>Демонтаж опалубки</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Исполнительная документация</h3>
+                    <ul>
+                        <li>Формирование исполнительной документации</li>
+                        <li>Анализ ведомостей объемов работ</li>
+                        <li>Составление локальных и объектных смет</li>
+                        <li>Составление актов приемки-сдачи работ (КС-2, КС-3)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section gallery">
+        <div class="container">
+            <h2 class="section-title">Наши работы</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="https://i.postimg.cc/3xFdYQnh/1.png" alt="Строительный проект"></div>
+                <div class="gallery-item"><img src="https://i.postimg.cc/26V6Qbmj/2.png" alt="Строительный проект"></div>
+                <div class="gallery-item"><img src="https://i.postimg.cc/W49zqmBf/3.png" alt="Строительный проект"></div>
+                <div class="gallery-item"><img src="https://i.postimg.cc/hG4hGZ5d/4.png" alt="Строительный проект"></div>
+                <div class="gallery-item"><img src="https://i.postimg.cc/FR8KDrsy/5.png" alt="Строительный проект"></div>
+                <div class="gallery-item"><img src="https://i.postimg.cc/QC7dz2HR/6.png" alt="Строительный проект"></div>
+                <div class="gallery-item"><img src="https://i.postimg.cc/qB6qg3jj/7.png" alt="Строительный проект"></div>
+                <div class="gallery-item"><img src="https://i.postimg.cc/8P85vzYD/8.png" alt="Строительный проект"></div>
+                <div class="gallery-item"><img src="https://i.postimg.cc/W1T19fjH/9.png" alt="Строительный проект"></div>
+                <div class="gallery-item"><img src="https://i.postimg.cc/rFSpNL64/10.png" alt="Строительный проект"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Контакты</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Свяжитесь с нами</h3>
+                    <p><strong>Адрес:</strong> Смоленск, ул. Строителей, 15</p>
+                    <p><strong>Телефон:</strong> +7 (XXX) XXX-XX-XX</p>
+                    <p><strong>Email:</strong> info@smoldial.ru</p>
+                    <p><strong>Часы работы:</strong> Пн-Пт: 9:00 - 18:00</p>
+                </div>
+                <div class="contact-form">
+                    <h3>Оставьте заявку</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Ваше имя</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Сообщение</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 ООО "СмолДиАл". Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>
